@@ -1,0 +1,55 @@
+﻿<Page x:Class="CrudWPF.MenuTerritories"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:CrudWPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="700"
+      Title="MenuTerritories">
+
+    <Grid ShowGridLines="False">
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition ></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Column="0" Grid.Row="0" Width="100" HorizontalAlignment="Right" Name="btnNew" Click="btnNew_Click">New</Button>
+
+        <DataGrid x:Name="dgvData" AutoGenerateColumns="False" IsReadOnly="True" Grid.Column="0" Grid.Row="1">
+            
+           <!--Font color / style of column headings-->
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="Turquoise"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderThickness" Value="0,0,1,2"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Style>
+            </DataGrid.Resources>
+            
+            <!--Columns Header Text and Bildings--> 
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="TerritoryID" Binding="{Binding TerritoryID}" Width="180"></DataGridTextColumn>
+                <DataGridTextColumn Header="TerritoryDescription" Width="200" Binding="{Binding TerritoryDescription}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Region" Width="*" Binding="{Binding Region}"></DataGridTextColumn>
+                
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                                <Button Width="100" x:Name="btnEdit" Click="btnEdit_Click" CommandParameter="{Binding TerritoryID}">Edit</Button>
+                                <Button Width="100" x:Name="btnDelete" Click="btnDelete_Click" CommandParameter="{Binding TerritoryID}">Delete</Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Page>
