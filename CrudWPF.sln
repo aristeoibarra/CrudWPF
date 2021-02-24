@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrudWPF", "CrudWPF\CrudWPF.csproj", "{4540278F-A8FD-41DC-9EC6-2F09F87FF1C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4540278F-A8FD-41DC-9EC6-2F09F87FF1C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4540278F-A8FD-41DC-9EC6-2F09F87FF1C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4540278F-A8FD-41DC-9EC6-2F09F87FF1C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4540278F-A8FD-41DC-9EC6-2F09F87FF1C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4DD80AC-020E-423B-BE05-EBABB0DB263E}
+	EndGlobalSection
+EndGlobal
