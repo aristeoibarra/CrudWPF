@@ -44,7 +44,12 @@ namespace CrudWPF
 
         private void btnEdit_Click(object sender, RoutedEventArgs e)
         {
+            string idTerritory = (string)((Button)sender).CommandParameter;
 
+            FormTerritory formTerritory = new FormTerritory();
+            formTerritory.IdTerritory = idTerritory;
+
+            MainWindow.StaticMainFrame.Content = formTerritory;
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

@@ -70,9 +70,18 @@ namespace CrudWPF
         {
             using(var db = new Model.NorthwindDataContext())
             {
+                string idTerritory = txtTerritoryId.Text;
+
+                if (IdExist(idTerritory))
+                {
+                    MessageBox.Show("TerritoryID already exists","Exist",MessageBoxButton.OK,MessageBoxImage.Warning);
+                    txtTerritoryId.Focus();
+                    return;
+                }
+
                 var oTerritory = new Model.Territories
                 {
-                    TerritoryID = txtTerritoryId.Text,
+                    TerritoryID = idTerritory,
                     TerritoryDescription = txtDescription.Text,
                     RegionID = (int)cmbRegion.SelectedValue
                 };
@@ -83,6 +92,10 @@ namespace CrudWPF
                 {
                     db.SubmitChanges();
                     MessageBox.Show("Successfully registered","Add", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    this.Clean();
+                    // Open the MenuTerritories
+                    MainWindow.StaticMainFrame.Content = new MenuTerritories();
                 }
                 catch (Exception ex)
                 {
@@ -107,10 +120,13 @@ namespace CrudWPF
                 {
                     db.SubmitChanges();
                     MessageBox.Show("Successfully updated", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    this.Clean();
+                    // Open the MenuTerritories
+                    MainWindow.StaticMainFrame.Content = new MenuTerritories();
                 }
                 catch (Exception ex)
                 {
-
                     MessageBox.Show("error: " + ex.Message);
                 }
             }
@@ -126,12 +142,27 @@ namespace CrudWPF
 
             if (IdTerritory.Equals(""))
             {
-                AddTerritory();
+                AddTerritory();                
             }
             else
             {
-                UpdateTerritory();
+                UpdateTerritory();              
+            }           
+        }
+
+        bool IdExist(string id)
+        {
+            using (var db = new Model.NorthwindDataContext())
+            {
+                return db.Territories.Any(x => x.TerritoryID.Equals(id));
             }
+        }
+
+        void Clean()
+        {
+            txtTerritoryId.Clear();
+            txtDescription.Clear();
+            cmbRegion.SelectedValue = -1;           
         }
     }
 }
